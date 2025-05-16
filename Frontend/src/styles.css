@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import '@ctrl/ngx-emoji-mart/picker';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.debug {
+    border: 1px solid red;
+}
+
+.debug1 {
+    border: 1px solid rgb(0, 102, 255);
+}
+.debug2 {
+    border: 1px solid rgb(40, 185, 27);
+}
+.debug3 {
+    border: 1px solid rgb(185, 90, 27);
+}
+.debug4 {
+    border: 1px solid rgb(214, 10, 187);
+}
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}

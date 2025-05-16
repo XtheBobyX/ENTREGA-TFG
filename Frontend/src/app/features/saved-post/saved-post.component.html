@@ -1,0 +1,20 @@
+<div class="flex flex-col lg:flex-row h-screen w-full overflow-y-hidden">
+    <!-- Contenido principal -->
+    <div class="flex-1 overflow-y-auto p-4">
+        <main class="w-full max-w-2xl mx-auto">
+            <h1 class="font-bold text-lg pb-3">Guardados</h1>
+            <p></p>
+            <ng-container *ngIf="savedPost.length >= 1 ; else elseTemplate">
+                <div *ngFor="let post of savedPost.reverse()" class="border border-gray-700 pb-4 mb-4 rounded">
+                    <app-post [post]="post"></app-post>
+                </div>
+            </ng-container>
+            <ng-template #elseTemplate>
+                <div class="flex flex-col items-center justify-center gap-4 mt-6 text-center">
+                    <h1 class="text-2xl font-bold">Guardar Posts para más tarde</h1>
+                    <p class="text-sm">Marca los post para encontrarlas fácilmente en el futuro.</p>
+                </div>
+            </ng-template>
+        </main>
+    </div>
+</div>

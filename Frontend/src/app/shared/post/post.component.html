@@ -1,0 +1,213 @@
+<div class="p-4">
+  <!-- Header: Usuario -->
+  <div class="flex items-start gap-4">
+    <!-- Avatar -->
+    <a [routerLink]="['/profile', usuario.username]">
+      <img [src]="usuario.url_imagen_perfil" [alt]="'Avatar de ' + usuario.nombre_completo"
+        class="w-10 h-10 rounded-full object-cover" />
+    </a>
+
+
+    <!-- Info de Usuario + contenido del post -->
+    <div class="flex-1">
+      <!-- Nombre de usuario y menú -->
+      <div class="flex items-center gap-2">
+        <!-- <a routerLink="profile/{{ usuario.username }}" class="font-semibold text-sm hover:underline cursor-pointer">
+          {{ usuario.nombre_completo }}
+        </a> -->
+        <a href="profile/{{ usuario.username }}" class="font-semibold text-sm hover:underline cursor-pointer">
+          {{ usuario.nombre_completo }}
+        </a>
+        <p class="text-gray-500 text-sm">&#64;{{ usuario.username }}</p>
+        <span class="text-gray-400 text-xs">{{ tiempoPublicacion }}</span>
+
+        <!-- <div class="relative ml-auto">
+          <button (click)="toggleMenu()">
+            Icono de 3 puntos -->
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
+              class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+            </svg>
+          </button> -->
+
+        <!-- Menú desplegable -->
+        <!-- <div *ngIf="menuAbierto"
+            class="absolute right-0 top-full mt-2 w-56 p-3 rounded-xl bg-black border border-gray-400 z-10">
+            <div class="flex pb-5 cursor-pointer hover:bg-gray-700 rounded-lg p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+              </svg>
+              <button class="pl-5">Eliminar</button>
+            </div>
+            <div class="flex pb-5 cursor-pointer hover:bg-gray-700 rounded-lg p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+              </svg>
+              <button class="pl-5">Actualizar</button>
+            </div>
+            <div class="flex pb-5 cursor-pointer hover:bg-gray-700 rounded-lg p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+              </svg>
+              <button class="pl-5">Guardar</button>
+            </div>
+            <div class="flex pb-5 cursor-pointer hover:bg-gray-700 rounded-lg p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+              </svg>
+              <button class="pl-5"> &#64;{{ usuario.username }}</button>
+            </div>
+          </div>
+        </div> -->
+
+
+      </div>
+
+      <!-- Contenido del post -->
+      <p class="mt-3">{{ post.contenido }}</p>
+
+      <!-- Imágenes -->
+      <div *ngIf="listadoImagenes" class="mt-4">
+        <div class="grid gap-2" [ngClass]="{
+          'grid-cols-1': listadoImagenes.length === 1,
+          'grid-cols-2': listadoImagenes.length === 2,
+          'grid-cols-2 grid-rows-2': listadoImagenes.length === 3 || listadoImagenes.length === 4
+        }">
+          <img *ngFor="let imagen of listadoImagenes" [src]="imagen.url_archivo" alt="Imagen del post"
+            class="w-full max-w-lg h-full object-cover rounded-xl" />
+        </div>
+      </div>
+
+      <!-- Encuesta -->
+      <div *ngIf="encuesta.titulo">
+        <div
+          class="max-w-[332px] mt-6 px-5 py-6 flex flex-col gap-4 rounded-lg border border-gray-700 shadow-sm mx-auto">
+          <legend class="text-2xl font-semibold text-gray-100">
+            {{ encuesta.titulo }}
+          </legend>
+
+          <div *ngFor="let opcion of opcionesEncuesta; let i = index">
+            <ng-container *ngIf="!encuesta.multiple_opciones; else multipleTemplate">
+              <!-- Radio -->
+              <div
+                class="cursor-pointer transition-colors duration-200 border rounded-md px-4 py-3 flex justify-between items-center"
+                [ngClass]="{
+                  'bg-violet-800 text-white border-violet-700':
+                    seleccion === opcion.id_opcion,
+                  'border-gray-700 text-gray-200 hover:bg-violet-900':
+                    seleccion !== opcion.id_opcion
+                }">
+                <label [for]="opcion.texto_opcion + '_' + encuesta.id_encuesta"
+                  class="w-full cursor-pointer select-none">
+                  {{ opcion.texto_opcion }}
+                </label>
+                <input type="radio" [id]="opcion.texto_opcion + '_' + encuesta.id_encuesta" [value]="opcion.id_opcion"
+                  [name]="'opciones_' + encuesta.id_encuesta" class="w-4 h-4 accent-violet-500" [(ngModel)]="seleccion"
+                  [checked]="seleccion === opcion.id_opcion" (click)="cambiarEstadoRadio(opcion.id_opcion)" />
+
+              </div>
+            </ng-container>
+
+            <!-- Checkbox -->
+            <ng-template #multipleTemplate>
+              <div
+                class="cursor-pointer transition-colors duration-200 border rounded-md px-4 py-3 flex justify-between items-center border-gray-700 text-gray-200 hover:bg-violet-900"
+                [ngClass]="{
+                  'bg-violet-800 text-white border-violet-700':
+                    seleccionMultiple.includes(opcion.id_opcion),
+                  'border-gray-700 text-gray-200 hover:bg-violet-900':
+                  seleccionMultiple !== opcion.id_opcion
+                }">
+                <label [for]="opcion.texto_opcion" class="w-full cursor-pointer select-none">
+                  {{ opcion.texto_opcion }}
+                </label>
+                <input type="checkbox" [id]="opcion.texto_opcion"
+                  [checked]="seleccionMultiple.includes(opcion.id_opcion)"
+                  (change)="cambiarEstadoCheckbox(opcion.id_opcion)" class="accent-violet-500 w-4 h-4" />
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Controles de interacción -->
+      <div class="flex items-center justify-between mt-5 max-w-md text-gray-500">
+        <!-- Botón Like -->
+        <button (click)="toggleLike(post.post_id, this.obtenerIdUsuarioActual())" aria-label="Me gusta"
+          class="flex items-center hover:text-red-500 transition duration-200"
+          [ngClass]="{ 'text-red-500': this.haveLike }">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" [attr.fill]="this.haveLike ? 'red' : 'none'"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5
+             -1.935 0-3.597 1.126-4.312 2.733
+             -.715-1.607-2.377-2.733-4.313-2.733
+             C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12
+             s9-4.78 9-12Z" />
+          </svg>
+          <span class="ml-1">
+            {{ datosPost.numeroLikes }}
+          </span>
+        </button>
+
+        <!-- Botón Comentarios -->
+        <a [routerLink]="['/comment', post.post_id]" aria-label="Comentarios">
+          <button aria-label="Comentarios" class="flex items-center hover:text-blue-500 transition duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z" />
+            </svg>
+            <span *ngIf="datosPost.numeroComentarios >= 1" class="pl-1 text-sm">
+              {{ datosPost.numeroComentarios }}
+            </span>
+          </button>
+        </a>
+
+
+        <!-- Botón Repost -->
+        <!-- <button aria-label="Repost" class="flex items-center hover:text-green-500 transition duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
+          </svg>
+          <span *ngIf="datosPost.numeroRepost >= 1" class="pl-1 text-sm">{{
+            datosPost.numeroRepost
+            }}</span>
+        </button> -->
+
+        <!-- Botón Compartir -->
+        <!-- <button aria-label="Compartir" class="flex items-center hover:text-purple-500 transition duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+          </svg>
+          <span class="pl-1 text-sm">0</span> -->
+        <!-- </button>  -->
+
+        <!-- Botón Guardar -->
+        <button aria-label="Guardar" (click)="toggleGuardarPost()"
+          class="flex items-center hover:text-yellow-500 transition duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+            [attr.fill]="this.haveSave ? 'yellow' : 'none'" [ngClass]="{ 'text-yellow-500': this.haveSave }"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+          </svg>
+          <!-- <span class="pl-1 text-sm">0</span> -->
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

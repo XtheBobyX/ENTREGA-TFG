@@ -1,0 +1,12 @@
+<!-- Pruebas modo oscuro y claro -->
+<!-- <input type="checkbox" name="darkMode" id="darkMode" (click)="cambiarModoOscuro()"> -->
+<app-menu-side *ngIf="(router.url !== '/login' && (router.url !== '/register'))" class="w-1/6 fixed top-0 left-0 h-screen z-100"></app-menu-side>
+  
+<router-outlet></router-outlet>
+
+<aside *ngIf="(router.url !== '/mensajes') && (router.url !== '/login') && (router.url !== '/register')" class="hidden lg:block w-1/4 fixed top-0 right-0">
+  <div class="w-[80%]">
+    <app-top-followers></app-top-followers>
+    <app-tendencies></app-tendencies>
+  </div>
+</aside>

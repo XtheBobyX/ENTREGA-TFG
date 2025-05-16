@@ -1,0 +1,29 @@
+<div class="px-6 py-4">
+    <div class="bg-gray-900 rounded-xl p-6 border border-gray-700">
+        <h2 class="text-white text-lg font-semibold mb-4">
+            Personas con más seguidores
+        </h2>
+        <div class="flex flex-col gap-6">
+            <div *ngFor="let usuario of listadoUsuariosPopulares" class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <a [href]="'/profile/' + usuario.username"><img [src]="usuario.avatar" alt="Avatar"
+                            class="w-12 h-12 rounded-full object-cover" /></a>
+                    <div>
+                        <a [href]="'/profile/' + usuario.username">
+                            <p class="font-semibold text-white text-sm">
+                                {{ usuario.full_name }}
+                            </p>
+                        </a>
+                        <p class="text-neutral-400 text-sm">&#64;{{ usuario.username }}</p>
+                    </div>
+                </div>
+                <ng-container *ngIf="!usuario.esPropietario">
+                    <button (click)="toggleFollow(usuario.id,idUsuarioLogueado)"
+                        class="outline-1 outline-white rounded-full text-sm px-4 py-2 w-fit bg-white text-black ml-2 cursor-pointer hover:bg-violet-500 hover:text-white hover:outline-0">
+                        {{ usuario.isFollowed ? 'Siguiendo' : 'Seguir' }}
+                    </button>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

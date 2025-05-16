@@ -1,0 +1,12 @@
+<div *ngFor="let usuario of listadoUsuarios">
+    <div (click)="abrirChat(usuario)" class="flex flex-col gap-4 cursor-pointer mb-3  border border-gray-900 p-4 rounded">
+        <div class="flex items-center gap-4">
+            <img [src]="usuario.url_imagen_perfil"
+                class="w-12 h-12 object-cover rounded-full" alt="Foto Perfil Usuario" />
+            <div class="flex flex-col">
+                <h1 class="font-bold text-base">{{usuario.nombre_completo}}</h1>
+                <span class="text-sm text-gray-400">&#64;{{usuario.username}}</span>
+            </div>
+        </div>
+    </div>
+</div>

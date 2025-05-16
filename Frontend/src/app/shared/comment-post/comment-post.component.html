@@ -1,0 +1,27 @@
+<div class="flex h-screen w-full overflow-y-hidden ml-[17%]">
+  <!-- Contenido principal -->
+  <div class="flex h-full w-5/6 overflow-y-auto">
+    <main class="p-6 lg:w-2/4">
+      <h1 class="text-2xl font-bold mb-3">Comentarios</h1>
+      <div class="border border-gray-700 pb-4 mb-4 rounded">
+        <app-post [post]="listadoPosts"></app-post>
+      </div>
+      <!--  -->
+      <div class="flex gap-3 border border-gray-700 rounded p-3 mb-4 items-center">
+        <img [src]="avatar" class="w-10 h-10 object-cover rounded-full" alt="">
+        <input type="text" placeholder="Escribe un comentario..." class="w-full" [(ngModel)]="contenidoComentario" (keyup.enter)="publicarComentario(contenidoComentario)">
+        <button (click)="publicarComentario(contenidoComentario)" class="cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+          </svg>
+        </button>
+        
+      </div>
+      <p class="font-bold mb-3 text-lg">{{listadoComentarios.length}} comentarios</p>
+      <!-- Comentarios -->
+       <div *ngFor="let comentario of listadoComentarios">
+        <app-comment [comment]="comentario"></app-comment>
+       </div>
+    </main>
+  </div>
+</div>

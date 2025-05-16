@@ -1,0 +1,83 @@
+<div class="flex flex-col md:flex-row h-auto md:h-screen w-full overflow-y-auto">
+  <!-- Contenido principal -->
+  <main class="w-full md:ml-[16.666667%] md:w-[61%]">
+    <div class="px-3 flex flex-col md:flex-row items-start gap-4 mt-6">
+      <!-- Botón volver atrás -->
+      <button (click)="goBack()" class="p-2 rounded cursor-pointer self-start md:self-auto lg:mt-0 mt-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+        </svg>
+      </button>
+
+      <!-- Información principal del usuario -->
+      <div class="w-full">
+        <!-- Banner -->
+        <div class="relative">
+          <img [src]="datosUsuario.portada" alt="Portada" class="w-[96%] h-40 sm:h-52 object-cover rounded-md" />
+
+          <!-- Imagen de perfil -->
+          <div class="absolute -bottom-14 sm:-bottom-16 left-4">
+            <img [src]="datosUsuario.url_imagen_perfil" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
+              alt="Perfil" />
+          </div>
+        </div>
+
+        <!-- Información del perfil -->
+        <div class="pt-20 sm:pt-24 px-4 relative">
+          <div class="absolute top-5 lg:right-9 right-6">
+            <ng-container *ngIf="esPropietarioPerfil; else mostrarSeguirBoton">
+              <button (click)="editarPerfil()"
+                class="bg-violet-600 text-white px-4 py-2 rounded-lg hover:bg-violet-700 transition duration-300 shadow-md">
+                Editar Perfil
+              </button>
+              <app-modal-edit-profile [isOpen]="modalAbierto"
+                (closeModal)="modalAbierto = false"></app-modal-edit-profile>
+            </ng-container>
+            <ng-template #mostrarSeguirBoton>
+              <button (click)="toggleFollow(datosUsuarioLogueado.id, datosUsuario.id)"
+                class="bg-violet-600 text-white px-4 py-2 rounded-lg hover:bg-violet-700 transition duration-300 shadow-md">
+                {{ haveFollow ? 'Dejar de Seguir' : 'Seguir' }}
+              </button>
+            </ng-template>
+          </div>
+
+          <!-- Nombre y Username -->
+          <p class="text-xl sm:text-2xl font-semibold">{{ datosUsuario.nombre_completo }}</p>
+          <p class="text-sm text-gray-400 mb-2">&#64;{{ datosUsuario.username }}</p>
+
+          <!-- Biografía -->
+          <p class="text-base text-white mb-4">{{ datosUsuario.biografia }}</p>
+
+          <!-- Fecha creación -->
+          <div class="flex items-center text-sm text-white gap-2 mb-6">
+            <!-- Icono + fecha -->
+          </div>
+
+          <!-- Métricas -->
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8">
+            <div class="border border-gray-300 px-4 py-3 rounded text-center">
+              <p class="font-bold">{{ datosPerfil.numeroSeguidores }}</p>
+              <p class="text-sm">Seguidores</p>
+            </div>
+            <div class="border border-gray-300 px-4 py-3 rounded text-center">
+              <p class="font-bold">{{ datosPerfil.numeroSeguidos }}</p>
+              <p class="text-sm">Seguidos</p>
+            </div>
+            <div class="border border-gray-300 px-4 py-3 rounded text-center">
+              <p class="font-bold">{{ datosPerfil.numeroPublicaciones }}</p>
+              <p class="text-sm">Publicaciones</p>
+            </div>
+          </div>
+
+          <!-- Publicaciones -->
+          <div>
+            <div *ngFor="let post of datosPerfil.posts" class="mb-6 border border-gray-300 rounded-lg shadow-sm p-4">
+              <app-post [post]="post"></app-post>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

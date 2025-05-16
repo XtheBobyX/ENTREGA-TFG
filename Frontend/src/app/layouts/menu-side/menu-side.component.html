@@ -1,0 +1,115 @@
+<button id="menu-toggle" class="p-3 text-white rounded-md lg:hidden fixed top-4 left-4 z-50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+</button>
+
+<!-- Fondo oscuro cuando el menú está abierto -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden lg:hidden"></div>
+
+<aside id="mobile-menu"
+    class="fixed top-0 left-0 w-64 h-full p-4 space-y-6 sm:bg-transparent bg-gray-800 border-r border-gray-700 transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:block">
+    <!-- Menú de navegación -->
+    <nav class="space-y-6 flex flex-col ml-10 h-screen text-white pt-4 rounded-lg shadow-lg">
+        <a routerLink="/home" class="items-center space-x-2 hidden lg:flex">
+            <img src="assets/logo.png" class="w-12 mb-5" alt="" />
+        </a>
+        <a routerLink="/home"
+            class="flex items-center mt-16 lg:mt-0 space-x-2 p-2 hover:bg-violet-600 hover: rounded-lg w-fit transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+
+            <span class="xl:inline font-normal text-lg">Home</span>
+        </a>
+        <a routerLink="#"
+            class="flex items-center space-x-2 p-2 hover:bg-violet-600 hover: rounded-lg w-fit transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            <span class="xl:inline text-lg font-normal">Buscar</span>
+        </a>
+        <a routerLink="#"
+            class="flex items-center space-x-2 p-2 hover:bg-violet-600 hover: rounded-lg w-fit transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+            </svg>
+            <span class="xl:inline text-lg font-normal">Notificaciones</span>
+        </a>
+        <a routerLink="/mensajes"
+            class="flex items-center space-x-2 p-2 hover:bg-violet-600 hover: rounded-lg w-fit transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+            </svg>
+            <span class="xl:inline text-lg font-normal">Mensajes</span>
+        </a>
+        <a routerLink="/saved"
+            class="flex items-center space-x-2 p-2 hover:bg-violet-600 hover: rounded-lg w-fit transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+            </svg>
+
+            <span class="xl:inline text-lg font-normal">Guardado</span>
+        </a>
+        <a [routerLink]="['/profile', username]"
+            class="flex items-center space-x-2 p-2 hover:bg-violet-600 rounded-lg w-fit transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+            <span class="xl:inline text-lg font-normal">Perfil</span>
+        </a>
+
+        <a routerLink="home">
+            <button
+                class="w-3/4 outline-1 outline-violet-700 p-3 rounded-lg hover:bg-violet-600 transition duration-300 mt-6 shadow-purple-500/50">
+                <div class="flex gap-4">
+                    <span class="sm:pr-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+                        </svg>
+                    </span>
+                    <span class="">Post</span>
+                </div>
+            </button>
+        </a>
+    </nav>
+
+    <!-- Botón de Post -->
+    <div (click)="logout()"
+        class="absolute bottom-4 w-fit px-4 sm:pr-1 py-2 rounded-4xl cursor-pointer hover:bg-gray-700">
+        <div (click)="cerrarSesion()"
+            class="hidden logout absolute bottom-20 left-7 border border-gray-600 rounded-lg p-3 w-4/5 hover:cursor-pointer">
+            <p>
+                Cerrar Sesión &#64;<span>{{ username }}</span>
+            </p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <img src="{{ avatarSrc }}" class="rounded-full w-12 h-12 object-cover" alt="User" />
+            <div class="flex flex-col sm:hidden lg:flex">
+                <span class="font-semibold text-white">{{ nombreCompleto }}</span>
+                <span class="text-sm text-gray-400">&#64;<span>{{ username }}</span>
+                </span>
+            </div>
+            <div class="sm:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</aside>
